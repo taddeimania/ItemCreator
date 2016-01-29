@@ -44,3 +44,8 @@ the server will place your spawned custom item in an empty inventory slot.
       - "     Another Lore"
     stack_Size: 1
 ```
+#### Command
+![Command](http://static.joel.io/ss1.png)
+
+#### Item
+![Item](http://static.joel.io/ss2.png)
