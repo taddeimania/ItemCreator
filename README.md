@@ -31,6 +31,8 @@ the server will place your spawned custom item in an empty inventory slot.
 
 ### Example
 
+#### plugins/config.yml
+
 ```yaml
 items:
   - name: "Jack's Epic Blade of Awesomeness!"
