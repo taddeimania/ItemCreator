@@ -2,3 +2,6 @@ name: ItemCreator
 version: 0.2
 author: Joel Taddei
 main: io.joel.server.ItemCreatorMain
+
+commands:
+  ic:

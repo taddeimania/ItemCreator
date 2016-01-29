@@ -1,5 +1,11 @@
 package io.joel.server;
 
+import org.bukkit.Bukkit;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -8,6 +14,7 @@ import java.io.File;
 public class ItemCreatorMain extends JavaPlugin {
 
     public static ItemCreatorMain instance;
+    public static ItemRegistry itemRegistry;
 
     private void createConfig() {
         try {
@@ -32,6 +39,20 @@ public class ItemCreatorMain extends JavaPlugin {
     public void onEnable(){
         createConfig();
         instance = this;
-        getServer().getPluginManager().registerEvents(new MyListener(), this);
+        itemRegistry = new ItemRegistry();
+    }
+
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (cmd.getName().equalsIgnoreCase("ic")) {
+            if (args[0].equalsIgnoreCase("spawn")){
+                String item_id = args[1];
+                Player player = (Player)sender;
+                Inventory playerInventory = player.getInventory();
+                ItemStack toSpawnItem = itemRegistry.get(item_id);
+                playerInventory.setItem(playerInventory.firstEmpty(), toSpawnItem);
+                return true;
+            }
+        }
+        return false;
     }
 }

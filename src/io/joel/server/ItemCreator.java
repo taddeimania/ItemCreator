@@ -2,12 +2,11 @@ package io.joel.server;
 
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -60,14 +59,8 @@ public class ItemCreator {
       }
    }
 
-   private int getItemLocation(Map map, Inventory inventory) {
-      if (map.containsKey("slot"))
-         return Math.abs((int) map.get("slot"));
-      return inventory.firstEmpty();
-   }
-
-   // TODO: drop player in method sig
-   public void createItems(Inventory inventory) {
+   public Map<String, ItemStack> createItems() {
+      Map<String, ItemStack> itemRegistry = new HashMap<>();
       List customItems = ItemCreatorMain.instance.getConfig().getMapList("items");
       customItems.forEach(iterItem->{
          Map map = (Map)iterItem;
@@ -75,7 +68,8 @@ public class ItemCreator {
          setItemLore(map, anonItem);
          setItemEnchantments(map, anonItem);
          setItemAmount(map, anonItem);
-         inventory.setItem(getItemLocation(map, inventory), anonItem);
+         itemRegistry.put(map.get("item_id").toString(), anonItem);
       });
+      return itemRegistry;
    }
 }
