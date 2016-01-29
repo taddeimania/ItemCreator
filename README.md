@@ -24,7 +24,7 @@ the server will place your spawned custom item in an empty inventory slot.
 | enchantments  | No            | List of Enchantments | List | See Below | |
 | enchantments.name | Yes       | Name of Enchantment | STRING | "DAMAGE_ALL" | | 
 | enchantments.level | No       | Level of Enchantment | Int | 1 | Lowest Available |
-| lore          | No            | Addition test about object | List | See Below* |
+| lore          | No            | Addition text about object | List | See Below* |
 
 *Lore is just a list of strings
 
